@@ -5,7 +5,7 @@ import java.util.Random;
  *
  * Functions :
  ***************************************************************************
- ************************ Random numbers ***********************************
+ ************** Random numbers & basic collisions **************************
  ***************************************************************************
  * Random numbers 
  * ====> RndInt & overload (3)
@@ -43,6 +43,12 @@ import java.util.Random;
  * if no arguments return obj address 
  * 
  * */
+ 
+//*********************************************************************************
+//*******************    Linked List      *****************************************
+//*********************************************************************************
+// usefull in RndPick(T ... val) , so once a value is chosen then it is removed from the list 
+
 //node
 class node<T>{
 	T val;
@@ -51,7 +57,7 @@ class node<T>{
 		this.val=val;
 	}	
 }
-//making the linked list
+//making the linked list 
 class linkedList<T>{
 node first ;	
 	linkedList(){
@@ -106,7 +112,9 @@ node first ;
 	}
 	
 }
-
+//*********************************************************************************
+//*******************    Linked List  end *****************************************
+//*********************************************************************************
 
 
 public class BGL {
@@ -131,7 +139,7 @@ public class BGL {
 		return val;
 	}
 	//______________________________________________________________________________________
-	//rand pick one of n elms 
+	//rand pick one of n elms AND delete it from the list !!!
 	public static <T>T RndPick(T ... val){
 		linkedList l = new linkedList();
 		add (l,val);
