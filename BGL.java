@@ -5,7 +5,7 @@ import java.util.Random;
  *
  * Functions :
  ***************************************************************************
- ************** Random numbers & basic collisions **************************
+ ************************ Random numbers ***********************************
  ***************************************************************************
  * Random numbers 
  * ====> RndInt & overload (3)
@@ -43,12 +43,6 @@ import java.util.Random;
  * if no arguments return obj address 
  * 
  * */
- 
-//*********************************************************************************
-//*******************    Linked List      *****************************************
-//*********************************************************************************
-// usefull in RndPick(T ... val) , so once a value is chosen then it is removed from the list 
-
 //node
 class node<T>{
 	T val;
@@ -57,7 +51,7 @@ class node<T>{
 		this.val=val;
 	}	
 }
-//making the linked list 
+//making the linked list
 class linkedList<T>{
 node first ;	
 	linkedList(){
@@ -112,9 +106,7 @@ node first ;
 	}
 	
 }
-//*********************************************************************************
-//*******************    Linked List  end *****************************************
-//*********************************************************************************
+
 
 
 public class BGL {
@@ -131,15 +123,23 @@ public class BGL {
 		Random nn = new Random();
 		return nn.nextInt(i)+bound;
 	}
-	//overload + bound
-	//random without 0
+	//overload + noVal
+	//value excluded example 0
 	public static int RndInt(int i , int bound , int noVal){
 		int val=RndInt(i,bound);
 		if (val==noVal)return RndInt(i,bound,noVal);
 		return val;
 	}
+	//overload + bound
+	//value excluded example [-2,2]
+	public static int RndInt(int i , int bound , int noValStart , int noValEnd){
+		int val=RndInt(i,bound);
+		if (val>=noValStart && val<=noValEnd)return RndInt(i,bound,noValStart , noValEnd);
+		return val;
+	}
+	
 	//______________________________________________________________________________________
-	//rand pick one of n elms AND delete it from the list !!!
+	//rand pick and delete one of n elms until the list is empty 
 	public static <T>T RndPick(T ... val){
 		linkedList l = new linkedList();
 		add (l,val);
@@ -177,6 +177,16 @@ public class BGL {
 		return false;
 	}
 
+	//square to rectangle
+	/*
+	public static boolean sqrRect(int sqrx , int sqry ,int sqrSize , int rectx , int recty , int sizex , int sizey){
+		if (sqrx>rectx && (sqrx+sqrSize)<rectx+sizex && sqry>recty && (sqry+sqrSize)<recty+sizey )
+			return true;
+			return false;
+		}
+*/
+	
+	
 	
 }
 
